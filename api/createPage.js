@@ -8,6 +8,7 @@ const handler = async (req, res) => {
         ...req.body,
       },
     });
+
     res.status(200).json(result);
   } catch (e) {
     console.error(e);

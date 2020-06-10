@@ -3,15 +3,14 @@ const prisma = new PrismaClient();
 
 const handler = async (req, res) => {
   const { id } = req.query;
-  const { id: paramsId } = req.params;
 
   try {
-    const user = await prisma.page.findOne({
+    const page = await prisma.page.findOne({
       where: {
-        id: parseInt(id || paramsId),
+        id: parseInt(id),
       },
     });
-    res.status(200).json(user);
+    res.status(200).json(page);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
