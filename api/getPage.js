@@ -1,13 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { id } = req.query;
+  const { id: paramsId } = req.params;
 
   try {
     const user = await prisma.page.findOne({
       where: {
-        id: parseInt(id),
+        id: parseInt(id || paramsId),
       },
     });
     res.status(200).json(user);
@@ -16,3 +17,5 @@ export default async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+module.exports = handler;

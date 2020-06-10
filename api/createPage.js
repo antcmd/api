@@ -1,7 +1,7 @@
-import { PrismaClient, PrismaClientRequestError } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   try {
     const result = await prisma.page.create({
       data: {
@@ -14,3 +14,5 @@ export default async (req, res) => {
     return res.status(500);
   }
 };
+
+module.exports = handler;
