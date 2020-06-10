@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "env": {
+    "DATABASE_URL": "@database_url"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "@database_url"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/pages",
+      "methods": ["GET"],
+      "dest": "/api/getPages.js"
+    },
+
+    {
+      "src": "/api/pages/(?<id>[^/]*)",
+      "methods": ["GET"],
+      "dest": "/api/getPage.js?id=$id"
+    },
+    {
+      "src": "/api/pages",
+      "methods": ["POST", "PUT"],
+      "dest": "/api/createPage.js"
+    }
+  ]
+}
