@@ -10,6 +10,7 @@
     "start": "node api/index.js",
     "prisma:introspect": "prisma introspect",
     "prisma:generate": "prisma generate",
+    "initdb": "npx prisma migrate save --name 'init' --experimental && npx prisma migrate up --experimental",
     "postinstall": "prisma generate"
   },
   "devDependencies": {
