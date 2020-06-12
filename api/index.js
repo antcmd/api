@@ -12,7 +12,9 @@ const pagePost = require("./page/post");
 const prisma = new PrismaClient();
 const app = express();
 
-app.use(cors({ origin: ["http://antcmd.now.sh/", "http://antglobe.now.sh/"] }));
+app.use(
+  cors({ origin: ["https://antcmd.now.sh/", "https://antglobe.now.sh/"] })
+);
 app.use(bodyParser.json());
 
 app.get("/pages", getPages);
